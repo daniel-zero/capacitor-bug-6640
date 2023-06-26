@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
+import { CapacitorCookies } from '@capacitor/core';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,12 @@ import { IonicModule } from '@ionic/angular';
   standalone: true,
   imports: [IonicModule],
 })
-export class AppComponent {
-  constructor() {}
+export class AppComponent implements OnInit {
+  ngOnInit(): void {
+    CapacitorCookies.setCookie({
+      key: 'test',
+      value: 'test',
+      url: 'https://www.google.com',
+    });
+  }
 }
